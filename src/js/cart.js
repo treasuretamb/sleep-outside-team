@@ -1,10 +1,20 @@
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
+  // Get the cart from local storage
   const cartItems = getLocalStorage("so-cart");
+
+  // Handle an empty or invalid cart 
+  if (!cartItems || !Array.isArray(cartItems)) {
+    document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.</p>";
+    return;
+  }
+
+  
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
