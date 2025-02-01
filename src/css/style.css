@@ -4,6 +4,7 @@
   /* colors */
   --primary-color: #f0a868;
   --secondary-color: #525b0f;
+  --secondary-colorb:#748115;
   --tertiary-color: #a4b8c4;
   --light-grey: #d0d0d0;
   --dark-grey: #303030;
@@ -90,7 +91,18 @@ button {
   border: 0;
   font-size: var(--large-font);
   cursor: pointer;
+  border-radius: 5px;
 }
+
+button:hover {
+  background-color: var(--secondary-colorb);
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
