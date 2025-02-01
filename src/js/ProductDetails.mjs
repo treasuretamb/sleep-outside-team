@@ -35,7 +35,7 @@ export default class ProductDetails {
       cart = [];
     }
 
-    const existingProduct = cart.find(item => item.Id === this.product.Id);
+    const existingProduct = cart.find((item) => item.Id === this.product.Id);
     if (existingProduct) {
       existingProduct.quantity += 1;
     } else {

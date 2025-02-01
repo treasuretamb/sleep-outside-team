@@ -18,14 +18,17 @@ class ProductDetails {
   async init() {
     try {
       // Fetch product details using the data source and the product ID
-      const productDetails = await this.dataSource.findProductById(this.productId);
-      
+      const productDetails = await this.dataSource.findProductById(
+        this.productId,
+      );
+
       // Once product details are available, render the HTML (assume renderProductHTML is a method)
       this.renderProductHTML(productDetails);
-      
+
       // Add an event listener to the 'Add to Cart' button
-      document.getElementById('addToCart')
-        .addEventListener('click', this.addToCart.bind(this));
+      document
+        .getElementById("addToCart")
+        .addEventListener("click", this.addToCart.bind(this));
     } catch (error) {
       console.error("Error loading product details:", error);
     }
@@ -34,8 +37,8 @@ class ProductDetails {
   // A sample method for rendering product details (you can modify this based on your structure)
   renderProductHTML(productDetails) {
     // Assuming you have a container to insert product details into
-    const productContainer = document.getElementById('productDetailsContainer');
-    
+    const productContainer = document.getElementById("productDetailsContainer");
+
     // Render product HTML (this can be adapted depending on how you want to display it)
     productContainer.innerHTML = `
       <h1>${productDetails.name}</h1>
