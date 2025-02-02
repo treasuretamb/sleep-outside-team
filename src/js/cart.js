@@ -1,38 +1,33 @@
 import { getLocalStorage } from "./utils.mjs";
 
-function renderCartContents() {
-  // Get the cart from local storage
-  const cartItems = getLocalStorage("so-cart");
+function cartItemTemplate(item) {
+  // Add error handling for image and data properties
+  const imageSrc = item.Image || item.Images?.[0] || "/images/placeholder.jpg";
+  const colorName = item.Colors?.[0]?.ColorName || "No color specified";
+  const price = item.FinalPrice?.toFixed(2) || "0.00";
 
-  // Handle an empty or invalid cart 
-  if (!cartItems || !Array.isArray(cartItems)) {
-    document.querySelector(".product-list").innerHTML = "<p>Your cart is empty.</p>";
+  return `<li class="cart-card divider">
+    <a href="#" class="cart-card__image">
+      <img src="${imageSrc}" alt="${item.Name}">
+    </a>
+    <h2 class="card__name">${item.Name}</h2>
+    <p class="cart-card__color">${colorName}</p>
+    <p class="cart-card__quantity">qty: 1</p>
+    <p class="cart-card__price">$${price}</p>
+  </li>`;
+}
+
+// UPDATE THE renderCartContents FUNCTION
+function renderCartContents() {
+  const cartItems = getLocalStorage("so-cart") || []; // Default to empty array
+  const cartList = document.querySelector(".product-list");
+
+  if (!cartItems.length) {
+    cartList.innerHTML = "<p>Your cart is empty.</p>";
     return;
   }
 
-  
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-}
-
-
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
-  return newItem;
+  cartList.innerHTML = cartItems.map(cartItemTemplate).join("");
 }
 
 renderCartContents();
