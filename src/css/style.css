@@ -26,11 +26,13 @@ body {
 img {
   max-width: 100%;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
 }
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -227,6 +229,54 @@ button:active {
     grid-template-columns: 150px auto 15%;
   }
 }
+
+/* Style for the categories section */
+.categories {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.category-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  width: 200px;
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.category-card h3 {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Hover effect for category cards */
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-card:active {
+  transform: translateY(0px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 
 footer {
   font-size: var(--small-font);

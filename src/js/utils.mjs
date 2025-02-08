@@ -41,10 +41,32 @@ export function setClick(selector, callback) {
 }
 
 // Function to render a list of items using a template function
-export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = false,
+) {
   if (clear) {
-    parentElement.innerHTML = '';
+    parentElement.innerHTML = "";
   }
-  const htmlStrings = list.map(templateFn).join('');
+  const htmlStrings = list.map(templateFn).join("");
   parentElement.insertAdjacentHTML(position, htmlStrings);
 }
+
+// templating utility
+export async function loadHeaderFooter() {
+  const headerResponse = await fetch("/partials/header.html");
+  const footerResponse = await fetch("/partials/footer.html");
+  
+  const headerHTML = await headerResponse.text();
+  const footerHTML = await footerResponse.text();
+  
+  // Insert the partials as HTML
+  const headerEl = document.querySelector("header");
+  const footerEl = document.querySelector("footer");
+  if (headerEl) headerEl.innerHTML = headerHTML;
+  if (footerEl) footerEl.innerHTML = footerHTML;
+}
+

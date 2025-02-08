@@ -1,0 +1,181 @@
+{
+  "Count": 10,
+  "Page": 1,
+  "PerPage": 10,
+  "NextPageUrl": null,
+  "LastPageUrl": null,
+  "RefinementsUrl": "/api/1.0/refinements/search~hammocks/",
+  "Title": "Search for \"hammocks\"",
+  "Result": [
+    {
+      "Id": "HM001",
+      "IsClearance": false,
+      "IsNew": true,
+      "Url": "/api/1.0/product/hm001/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm001/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm001/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm001/",
+        "ReviewCount": 12,
+        "AverageRating": 4.5
+      },
+      "Brand": { "Name": "Eagle Nest Outfitters" },
+      "Name": "SingleNest Hammock",
+      "FinalPrice": 49.99,
+      "Image": "https://example.com/images/hm001.jpg"
+    },
+    {
+      "Id": "HM002",
+      "IsClearance": true,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm002/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm002/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm002/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm002/",
+        "ReviewCount": 8,
+        "AverageRating": 4.2
+      },
+      "Brand": { "Name": "Wise Owl Outfitters" },
+      "Name": "Camping Hammock",
+      "FinalPrice": 39.99,
+      "Image": "https://example.com/images/hm002.jpg"
+    },
+    {
+      "Id": "HM003",
+      "IsClearance": false,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm003/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm003/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm003/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm003/",
+        "ReviewCount": 15,
+        "AverageRating": 4.7
+      },
+      "Brand": { "Name": "Grand Trunk" },
+      "Name": "Ultralight Hammock",
+      "FinalPrice": 29.99,
+      "Image": "https://example.com/images/hm003.jpg"
+    },
+    {
+      "Id": "HM004",
+      "IsClearance": false,
+      "IsNew": true,
+      "Url": "/api/1.0/product/hm004/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm004/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm004/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm004/",
+        "ReviewCount": 20,
+        "AverageRating": 4.8
+      },
+      "Brand": { "Name": "Kammok" },
+      "Name": "Roo Double Hammock",
+      "FinalPrice": 79.99,
+      "Image": "https://example.com/images/hm004.jpg"
+    },
+    {
+      "Id": "HM005",
+      "IsClearance": false,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm005/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm005/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm005/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm005/",
+        "ReviewCount": 5,
+        "AverageRating": 3.9
+      },
+      "Brand": { "Name": "Hennessy Hammock" },
+      "Name": "Expedition Zip Hammock",
+      "FinalPrice": 149.99,
+      "Image": "https://example.com/images/hm005.jpg"
+    },
+    {
+      "Id": "HM006",
+      "IsClearance": true,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm006/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm006/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm006/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm006/",
+        "ReviewCount": 10,
+        "AverageRating": 4.1
+      },
+      "Brand": { "Name": "Bear Butt" },
+      "Name": "Double Camping Hammock",
+      "FinalPrice": 45.99,
+      "Image": "https://example.com/images/hm006.jpg"
+    },
+    {
+      "Id": "HM007",
+      "IsClearance": false,
+      "IsNew": true,
+      "Url": "/api/1.0/product/hm007/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm007/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm007/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm007/",
+        "ReviewCount": 18,
+        "AverageRating": 4.6
+      },
+      "Brand": { "Name": "Lawson Hammock" },
+      "Name": "Blue Ridge Camping Hammock",
+      "FinalPrice": 199.99,
+      "Image": "https://example.com/images/hm007.jpg"
+    },
+    {
+      "Id": "HM008",
+      "IsClearance": false,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm008/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm008/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm008/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm008/",
+        "ReviewCount": 7,
+        "AverageRating": 3.8
+      },
+      "Brand": { "Name": "Fox Outfitters" },
+      "Name": "Neolite Single Hammock",
+      "FinalPrice": 32.99,
+      "Image": "https://example.com/images/hm008.jpg"
+    },
+    {
+      "Id": "HM009",
+      "IsClearance": true,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm009/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm009/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm009/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm009/",
+        "ReviewCount": 6,
+        "AverageRating": 4.0
+      },
+      "Brand": { "Name": "Gold Armour" },
+      "Name": "Camping Hammock with Straps",
+      "FinalPrice": 25.99,
+      "Image": "https://example.com/images/hm009.jpg"
+    },
+    {
+      "Id": "HM010",
+      "IsClearance": false,
+      "IsNew": false,
+      "Url": "/api/1.0/product/hm010/",
+      "WebUrl": "https://www.sierra.com/product/hammock/hm010/",
+      "AffiliateWebUrl": "https://www.sierra.com/product/hammock/hm010/",
+      "Reviews": {
+        "ReviewsUrl": "/api/1.0/reviewsbyproduct/hm010/",
+        "ReviewCount": 14,
+        "AverageRating": 4.4
+      },
+      "Brand": { "Name": "Vivere" },
+      "Name": "Brazilian Double Hammock",
+      "FinalPrice": 54.99,
+      "Image": "https://example.com/images/hm010.jpg"
+    }
+  ]
+}

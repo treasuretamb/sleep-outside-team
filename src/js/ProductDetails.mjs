@@ -1,17 +1,22 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
-  return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
-    <h2 class="divider">${product.NameWithoutBrand}</h2>
+  if (!product) {
+    return `<p class="error-message">Product details not available.</p>`;
+  }
+
+  return `<section class="product-detail"> 
+    <h3>${product.Brand?.Name || "Unknown Brand"}</h3>
+    <h2 class="divider">${product.NameWithoutBrand || "No Name"}</h2>
     <img
       class="divider"
-      src="${product.Image}"
-      alt="${product.NameWithoutBrand}"
+      src="${product.Images?.PrimaryLarge || "placeholder.jpg"}"
+      alt="${product.NameWithoutBrand || "Product Image"}"
     />
-    <p class="product-card__price">$${product.FinalPrice}</p>
-    <p class="product__color">${product.Colors[0].ColorName}</p>
+    <p class="product-card__price">$${product.FinalPrice || "N/A"}</p>
+    <p class="product__color">${product.Colors?.[0]?.ColorName || "No Color Info"}</p>
     <p class="product__description">
-    ${product.DescriptionHtmlSimple}
+    ${product.DescriptionHtmlSimple || "No Description Available."}
     </p>
     <div class="product-detail__add">
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
@@ -25,16 +30,28 @@ export default class ProductDetails {
     this.dataSource = dataSource;
   }
   async init() {
-    this.product = await this.dataSource.findProductById(this.productId);
-    this.renderProductDetails("main");
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addToCart.bind(this));
+    try {
+      this.product = await this.dataSource.findProductById(this.productId);
+      
+      console.log("Fetched Product:", this.product); // Debugging log
+      
+      if (!this.product) {
+        console.error("Product not found. Check your API response.");
+        document.querySelector("main").innerHTML = `<p class="error-message">Product not found.</p>`;
+        return;
+      }
+      
+      this.renderProductDetails("main");
+      document
+        .getElementById("addToCart")
+        ?.addEventListener("click", this.addToCart.bind(this));
+    } catch (error) {
+      console.error("Error initializing product details:", error);
+    }
   }
   addToCart() {
     let currentCart = getLocalStorage("so-cart");
     
-    // Force array format for legacy data
     if (!Array.isArray(currentCart)) {
       currentCart = [];
     }
@@ -44,9 +61,6 @@ export default class ProductDetails {
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
-    element.insertAdjacentHTML(
-      "afterBegin",
-      productDetailsTemplate(this.product)
-    );
+    element.insertAdjacentHTML("afterBegin", productDetailsTemplate(this.product));
   }
 }
