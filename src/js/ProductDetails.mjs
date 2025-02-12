@@ -37,42 +37,65 @@ export default class ProductDetails {
 
   async init() {
     try {
-      // Query the API directly using the new endpoint.
       const response = await fetch(baseURL + `product/${this.productId}`);
       if (!response.ok) {
         throw new Error("Bad response from API");
       }
-      // Assume the API returns the product object directly (not wrapped in a Result)
-      this.product = await response.json();
+      let data = await response.json();
+
+      // If the API wraps the product in a "Result" property, extract it.
+      this.product = data.Result ? data.Result : data;
 
       console.log("Fetched Product:", this.product);
-      
+
       if (!this.product) {
         console.error("Product not found. Check your API response.");
-        document.querySelector("main").innerHTML = `<p class="error-message">Product not found.</p>`;
+        document.querySelector("main").innerHTML =
+          `<p class="error-message">Product not found.</p>`;
         return;
       }
-      
-      // Render the product details in the <main> element.
+
+      // Render the product details
       this.renderProductDetails("main");
-      // Attach the event listener to the Add to Cart button.
-      document.getElementById("addToCart")?.addEventListener("click", this.addToCart.bind(this));
+
+      // Attach the event listener for Add to Cart
+      document
+        .getElementById("addToCart")
+        ?.addEventListener("click", this.addToCart.bind(this));
     } catch (error) {
       console.error("Error initializing product details:", error);
     }
   }
 
+  // addToCart METHOD
   addToCart() {
     let currentCart = getLocalStorage("so-cart");
     if (!Array.isArray(currentCart)) {
       currentCart = [];
     }
-    currentCart.push(this.product);
+
+    // Check if product already exists in cart
+    const existingItem = currentCart.find(
+      (item) => item.Id === this.product.Id,
+    );
+
+    if (existingItem) {
+      // Increment quantity if item exists
+      existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+      // Add new item with quantity 1
+      this.product.quantity = 1;
+      currentCart.push(this.product);
+    }
+
     setLocalStorage("so-cart", currentCart);
   }
 
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
-    element.insertAdjacentHTML("afterBegin", productDetailsTemplate(this.product));
+    element.insertAdjacentHTML(
+      "afterBegin",
+      productDetailsTemplate(this.product),
+    );
   }
 }
