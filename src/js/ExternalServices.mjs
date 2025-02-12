@@ -6,11 +6,8 @@ function convertToJson(res) {
   throw new Error("Bad Response");
 }
 
-export default class ProductData {
-  // We no longer need to store a category or path
-  constructor() {
-    // Empty constructor for flexibility
-  }
+export default class ExternalServices {
+  constructor() {}
 
   // Fetch data from the API for a given category
   async getData(category) {
@@ -24,7 +21,10 @@ export default class ProductData {
   async findProductById(id, category) {
     try {
       const productsData = await this.getData(category);
-      console.log("Available Product IDs:", productsData.map(p => p.Id));
+      console.log(
+        "Available Product IDs:",
+        productsData.map((p) => p.Id),
+      );
 
       // Ensure ID comparison is consistent by converting both to strings
       const product = productsData.find((p) => String(p.Id) === String(id));
@@ -39,6 +39,35 @@ export default class ProductData {
     } catch (error) {
       console.error("Error finding product:", error);
       return null;
+    }
+  }
+
+  // New checkout method to submit the order to the server.
+  // The order object should follow the required format.
+  async checkout(order) {
+    try {
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+      };
+
+      // Note: The URL below is specified by the assignment.
+      const response = await fetch(
+        "http://wdd330-backend.onrender.com/checkout",
+        options,
+      );
+
+      if (!response.ok) {
+        throw new Error("Checkout request failed");
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      throw error;
     }
   }
 }
