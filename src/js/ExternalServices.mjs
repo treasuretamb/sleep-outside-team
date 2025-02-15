@@ -1,10 +1,17 @@
 // Use the environment variable for the API base URL
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
-  if (res.ok) return res.json();
-  throw new Error("Bad Response");
+
+async function convertToJson(res) {
+  const jsonResponse = await res.json();
+  if (res.ok) {
+    return jsonResponse;
+  } else {
+    // Throw a custom error object that includes the response details
+    throw { name: 'servicesError', message: jsonResponse };
+  }
 }
+
 
 export default class ExternalServices {
   constructor() {}
@@ -42,7 +49,6 @@ export default class ExternalServices {
     }
   }
 
-  // New checkout method to submit the order to the server.
   // The order object should follow the required format.
   async checkout(order) {
     try {

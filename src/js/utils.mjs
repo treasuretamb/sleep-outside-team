@@ -55,7 +55,7 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings);
 }
 
-// templating utility
+// Templating utility for header and footer
 export async function loadHeaderFooter() {
   const headerResponse = await fetch("/partials/header.html");
   const footerResponse = await fetch("/partials/footer.html");
@@ -70,3 +70,32 @@ export async function loadHeaderFooter() {
   if (footerEl) footerEl.innerHTML = footerHTML;
 }
 
+// Alert utility to display messages
+export function alertMessage(message, scroll = true) {
+  // Create the alert container
+  const alertDiv = document.createElement("div");
+  alertDiv.classList.add("alert");
+  
+  // Set the inner HTML with a close button
+  alertDiv.innerHTML = `<span>${message}</span>
+                        <button type="button" class="close-alert">X</button>`;
+  
+  // Add a listener to the close button to remove the alert
+  const closeBtn = alertDiv.querySelector(".close-alert");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      alertDiv.remove();
+    });
+  }
+  
+  // Prepend the alert to the top of the main element
+  const main = document.querySelector("main");
+  if (main) {
+    main.prepend(alertDiv);
+  }
+  
+  // Optionally scroll to the top so the user sees the alert
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}

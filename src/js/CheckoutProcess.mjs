@@ -98,5 +98,5 @@ export default class CheckoutProcess {
     // Optionally clear the cart on successful order submission.
     setLocalStorage("so-cart", []);
     return result;
-  }
+  } 
 }
